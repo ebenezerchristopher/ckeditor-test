@@ -10,15 +10,9 @@ export default class LinkDescriptionEditing extends Plugin {
 		const schema = this.editor.model.schema;
 
 		schema.register("linkElement", {
-			allowIn: ["$root", "$block"],
-			allowAttributesOf: "$block",
 			isLimit: true,
-			isContent: true,
+			isObject: true,
 			isSelectable: true,
-		});
-
-		schema.extend("$text", {
-			allowAttributes: ["linkWithDescription"],
 		});
 
 		schema.extend("linkElement", {

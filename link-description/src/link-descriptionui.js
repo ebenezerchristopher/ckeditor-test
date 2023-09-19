@@ -73,7 +73,17 @@ export default class LinkDescriptionUI extends Plugin {
 						(firstNode.is("$text") || firstNode.is("$textProxy")) &&
 						!firstNode.hasAttribute("linkHref")
 					) {
-						writer.setAttribute("linkWithDescription", value, firstNode);
+						const text = writer.createText(firstNode.data);
+						const range = writer.createRangeOn(firstNode);
+						const element = writer.createElement("linkElement", {
+							href: value.href,
+							linkDescription: value.linkDescription,
+						});
+
+						element._appendChild(text);
+
+						writer.remove(firstNode);
+						writer.insert(element, range.start);
 					} else {
 						return;
 					}

@@ -28,6 +28,7 @@ export default class CustomIdEditing extends Plugin {
 				return writer.createAttributeElement("section", {
 					id: modelAttributeValue,
 					"data-sectionWithId": true,
+					style: "display: inline-block;",
 				});
 			},
 		});

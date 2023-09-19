@@ -45,7 +45,9 @@ export default class CustomIduI extends Plugin {
 
 			const parentElement = first(selection.getSelectedBlocks());
 
-			const element = first(parentElement.getChildren());
+			console.log(Array.from(selection.getSelectedBlocks()), "parentElement");
+
+			const element = first(parentElement?.getChildren());
 
 			editor.model.change((writer) => {
 				if (element) {
@@ -56,8 +58,6 @@ export default class CustomIduI extends Plugin {
 					return;
 				}
 			});
-
-			console.log(parentElement, element, "element");
 
 			// Hide the form view after submit.
 			this._hideUI();
